@@ -1,0 +1,14 @@
+{% extends "GTCoreBundle::layout.html.twig" %}
+
+{% block title %}GTClubBundle:Equipe:index{% endblock %}
+
+{% block contenu %}
+	{% if not pagename is null %}
+	<h1>{{ 'gt.club.bienvenue'|trans({'%pagename%': pagename}) }}</h1>
+	{% endif %}
+{% endblock %}
+
+{% block menu_contextuel %}
+	{% set vars = {'club' : club} %}
+	{% include 'GTClubBundle::menu_club.html.twig' with vars %}
+{% endblock %}

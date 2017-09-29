@@ -1,0 +1,8 @@
+{% extends "GTCoreBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - {{ club.nom }}{% endblock %}
+
+{% block menu_contextuel %}
+	{% set vars = {'club' : club, 'cl_equipes' : 'active' } %}
+	{% include 'GTClubBundle::menu_club.html.twig' with vars %}
+{% endblock %}

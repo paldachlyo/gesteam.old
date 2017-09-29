@@ -1,0 +1,11 @@
+{% extends "GTCoreBundle::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - {{ club.nom }}{% endblock %}
+
+{% block contenu %}
+{{ club.nom }} <br>
+{{ club.dateCreation|date('d/m/Y') }} <br>
+{{ club.dateModification|date('d/m/Y') }} <br>
+{{ club.email }} <br>
+{{ club.telephone }} <br>
+{% endblock %}

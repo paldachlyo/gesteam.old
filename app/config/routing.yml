@@ -1,0 +1,11 @@
+gt_club:
+    resource: "@GTClubBundle/Resources/config/routing.yml"
+    prefix:   /club
+
+dp_core:
+    resource: "@GTCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation

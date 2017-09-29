@@ -1,0 +1,8 @@
+gt:
+    club:
+        default:
+            hello: Bonjour 
+        bienvenue: Bienvenue sur la page %pagename% 
+        equipes: Equipes
+        membres: Effectifs
+        bureau: Bureau

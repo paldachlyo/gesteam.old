@@ -1,0 +1,38 @@
+gt_club_homepage:
+    path:     /{id_club}
+    defaults: { _controller: GTClubBundle:Club:index }
+    requirements:
+        page: \d*
+
+gt_clubs:
+    path: /
+    defaults: { _controller: GTClubBundle:Default:index }
+        
+gt_club_creer:
+    path:     /creer
+    defaults: { _controller: GTClubBundle:Club:creer }
+
+gt_club_afficher:
+    path:     /show/{page}
+    defaults:
+        _controller: GTClubBundle:Club:show
+        page:        1
+    requirements:
+        page: \d*
+
+gt_club_equipe:
+    path:     /{id_club}/equipe/{id_equipe}
+    defaults: { _controller: GTClubBundle:Equipe:index }
+
+gt_club_equipes:
+    path: /{id_club}/equipes
+    defaults: { _controller: GTClubBundle:Equipe:equipes }
+    
+gt_club_membres:
+    path: /{id_club}/membres
+    defaults: { _controller: GTClubBundle:Membre:membres }
+    
+gt_club_bureau:
+    path: /{id_club}/bureau
+    defaults: { _controller: GTClubBundle:Default:index }
+    
