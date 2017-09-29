@@ -33,17 +33,17 @@ class ClubController extends Controller
 		$form = $this->get('form.factory')->create(ClubType::class, $club);
 
 		if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-		  $em = $this->getDoctrine()->getManager();
-		  $em->persist($club);
-		  $em->flush();
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($club);
+			$em->flush();
 
-		  $request->getSession()->getFlashBag()->add('notice', 'club bien enregistrée.');
-
-		  return $this->redirectToRoute('gt_club_afficher', array('id' => $club->getId()));
+			$request->getSession()->getFlashBag()->add('notice', 'club bien enregistrée.');
+			
+			return $this->redirectToRoute('gt_club_homepage', array('id_club' => $club->getId()));
 		}
 
 		return $this->render('GTClubBundle:Club:creer.html.twig', array(
-		  'form' => $form->createView(),
+			'form' => $form->createView(),
 		));
 	}
 	

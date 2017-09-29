@@ -43,15 +43,46 @@ class EquipeController extends Controller
 		  throw new NotFoundHttpException("Le club d'id ".$id_club." n'existe pas.");
 		}
 		
+		// les équipes
+		$listeEquipes = $em
+			->getRepository('GTClubBundle:Equipe')
+			->findBy(array('club' => $club));
+		
 		return $this->render('GTClubBundle:Equipe:equipes.html.twig', array(
-            'club' => $club
+            'club' => $club,
+			'equipes' => $listeEquipes
         ));
 	}
 	
 	/**
-	 * Affiche les équipes d'un utilisateur
+	 * Creer une équipe
 	 */
-	public function userEquipesAction($id_user) {
+	public function creerAction($id_club, Request $request) {
+		$em = $this->getDoctrine()->getManager();
 		
+		// Le club
+		$club = $em->getRepository('GTClubBundle:Club')->find($id_club);
+		if (null === $club) {
+		  throw new NotFoundHttpException("Le club d'id ".$id_club." n'existe pas.");
+		}
+		
+		$equipe = new equipe();
+		$form = $this->get('form.factory')->create(EquipeType::class, $equipe);
+
+		if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+			$equipe->setClub($club);
+			$em->persist($equipe);
+			$em->flush();
+
+			$request->getSession()->getFlashBag()->add('notice', 'Equipe bien enregistrée.');
+
+			return $this->redirectToRoute('gt_club_equipes', array('id_club' => $club->getId()));
+		}
+
+		return $this->render('GTClubBundle:Equipe:creer.html.twig', array(
+			'club' => $club,
+			'form' => $form->createView(),
+		));
 	}
 }

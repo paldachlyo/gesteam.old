@@ -1,4 +1,4 @@
-{% extends "GTCoreBundle::layout.html.twig" %}
+{% extends "GTClubBundle::layout.html.twig" %}
 
 {% block title %}{{ parent() }} - {{ club.nom }}{% endblock %}
 
@@ -10,18 +10,8 @@
 {{ club.telephone }} <br>
 {% endblock %}
 
-{% block menu_user %}
-{{ render(controller('GTClubBundle:Equipe:userlist', { 'id_user': 1 } )) }}
-{% endblock %}
-
 {% block menu_contextuel %}
 	{% set vars = {'club' : club } %}
 	{% include 'GTClubBundle::menu_club.html.twig' with vars %}
 {% endblock %}
 
-{% block chemin %}
-<ol class="breadcrumb">
-	<li><a href="{{ path('gt_club_homepage', {'id_club': club.id}) }}">Club</a></li>
-	<li class="active"><a href="{{ path('gt_club_homepage', {'id_club': club.id}) }}">{{ club.nom }}</a></li>
-</ol>
-{% endblock %}

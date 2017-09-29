@@ -1,0 +1,12 @@
+{% extends "GTClubBundle::layout.html.twig" %}
+
+{% block title %} {{ parent() }} - {{ club.nom }} - {{ 'gt.club.equipe.title.creer'|trans() }} {% endblock %}
+
+{% block menu_contextuel %}
+	{% set vars = {'club' : club, 'cl_equipes' : 'active' } %}
+	{% include 'GTClubBundle::menu_club.html.twig' with vars %}
+{% endblock %}
+
+{% block contenu %}
+{{ form(form) }}
+{% endblock %}

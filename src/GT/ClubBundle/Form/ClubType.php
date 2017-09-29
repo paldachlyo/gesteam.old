@@ -18,6 +18,8 @@ class ClubType extends AbstractType
     {
         $builder
 			->add('nom', TextType::class)
+			->add('email', TextType::class)
+			->add('telephone', TextType::class)
 			->add('creer', SubmitType::class);
     }
     

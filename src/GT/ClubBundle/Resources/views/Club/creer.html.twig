@@ -1,6 +1,10 @@
-{% extends "GTCoreBundle::layout.html.twig" %}
+{% extends "GTClubBundle::layout.html.twig" %}
 
-{% block title %}GTClubBundle:Club:creer{% endblock %}
+{% block title %} {{ parent() }} - {{ 'gt.club.title.creer'|trans() }} {% endblock %}
+
+{% block menu_contextuel %}
+<h3>{{ 'gt.club.title.creer'|trans() }}</h3>
+{% endblock %}
 
 {% block contenu %}
 {{ form(form) }}

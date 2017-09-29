@@ -24,7 +24,7 @@ class Equipe
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=255, unique=true)
+     * @ORM\Column(name="nom", type="string", length=255, unique=false)
      */
     private $nom;
 
@@ -49,6 +49,12 @@ class Equipe
      */
     private $dateModification;
 
+	/**
+	 * @ORM\ManyToOne(targetEntity="GT\ClubBundle\Entity\Club")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $club;
+	
 	public function __construct() {
 		$this->dateCreation = new \DateTime();
 		$this->dateModification = new \DateTime();
@@ -159,5 +165,25 @@ class Equipe
     {
         return $this->dateModification;
     }
+	
+	/**
+	 * Set club
+	 *
+	 * @return Club
+	 */
+	public function setClub(Club $club) {
+		$this->club = $club;
+		
+		return $this;
+	}
+	
+	/**
+	 * Get club
+	 *
+	 * @return Club
+	 */
+	public function getClub() {
+		return $this->club;
+	}
 }
 

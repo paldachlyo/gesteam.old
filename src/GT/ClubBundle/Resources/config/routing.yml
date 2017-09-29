@@ -2,7 +2,7 @@ gt_club_homepage:
     path:     /{id_club}
     defaults: { _controller: GTClubBundle:Club:index }
     requirements:
-        page: \d*
+        id_club: \d*
 
 gt_clubs:
     path: /
@@ -23,7 +23,13 @@ gt_club_afficher:
 gt_club_equipe:
     path:     /{id_club}/equipe/{id_equipe}
     defaults: { _controller: GTClubBundle:Equipe:index }
+    requirements:
+        id_equipe: \d*
 
+gt_club_equipe_creer:
+    path: /{id_club}/equipe/creer
+    defaults: { _controller: GTClubBundle:Equipe:creer }
+    
 gt_club_equipes:
     path: /{id_club}/equipes
     defaults: { _controller: GTClubBundle:Equipe:equipes }

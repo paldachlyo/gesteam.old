@@ -1,8 +1,25 @@
 gt:
     club:
+        title:
+            creer: Création d'un club
         default:
             hello: Bonjour 
-        bienvenue: Bienvenue sur la page %pagename% 
-        equipes: Equipes
-        membres: Effectifs
-        bureau: Bureau
+        bienvenue: Bienvenue sur la page %pagename%
+        btn_ajouter: Ajouter un club
+        tab:
+            label:
+                equipes: Equipes
+                membres: Effectifs
+                bureau: Bureau
+        equipe:
+            title:
+                creer: Création d'une équipe
+            colonne:
+                equipe: Equipe
+                email: Email
+                date_creation: Date de création
+                date_modification: Date de modification
+                nombre_membres: Effectifs
+                no_equipe: Aucune équipe trouvée pour ce club
+            btn_ajouter: Ajouter équipe
+        club: Club
