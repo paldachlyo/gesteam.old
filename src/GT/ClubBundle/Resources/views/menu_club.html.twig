@@ -7,6 +7,9 @@
 {% if not cl_bureau is defined %}
 	{% set cl_bureau = '' %}
 {% endif %}
+{% if not cl_evenement is defined %}
+	{% set cl_evenement = '' %}
+{% endif %}
 
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
@@ -17,13 +20,14 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="{{ path('gt_club_homepage', {'id_club': club.id }) }}">{{ club.nom }}</a>
+			<a class="navbar-brand" href="{{ path('gt_club_homepage', {'id_club': club.id }) }}"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
 		</div>
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="{{ cl_equipes }}"><a href="{{ path('gt_club_equipes', {'id_club': club.id }) }}">{{ 'gt.club.tab.label.equipes'|trans() }}</a></li>
 				<li class="{{ cl_membres }}"><a href="{{ path('gt_club_membres', {'id_club': club.id }) }}">{{ 'gt.club.tab.label.membres'|trans() }}</a></li>
 				<li class="{{ cl_bureau }}"><a href="{{ path('gt_club_bureau', {'id_club': club.id }) }}">{{ 'gt.club.tab.label.bureau'|trans() }}</a></li>
+				<li class="{{ cl_evenement }}"><a href="{{ path('gt_club_evenements', {'id_club': club.id }) }}">{{ 'gt.club.tab.label.bureau'|trans() }}</a></li>
 			</ul>
 		</div>
 	</div>

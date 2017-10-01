@@ -4,6 +4,7 @@ namespace GT\ClubBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,10 +18,16 @@ class ClubType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-			->add('nom', TextType::class)
-			->add('email', TextType::class)
-			->add('telephone', TextType::class)
-			->add('creer', SubmitType::class);
+			->add('nom', TextType::class, 
+				array('label' => 'gt.club.form.label.nom'))
+			->add('email', EmailType::class, 
+				array('label' => 'gt.club.form.label.email'))
+			->add('telephone', TextType::class, 
+				array(
+					'label' => 'gt.club.form.label.telephone', 
+					'required' => false))
+			->add('creer', SubmitType::class, 
+				array('label' => 'gt.club.form.label.creer'));
     }
     
     /**

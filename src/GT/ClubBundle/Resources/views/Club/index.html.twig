@@ -3,6 +3,17 @@
 {% block title %}{{ parent() }} - {{ club.nom }}{% endblock %}
 
 {% block contenu %}
+<div class="row">
+	<div class="col-md-4">
+		<div class="panel panel-primary">Evénements</div>
+	</div>
+	<div class="col-md-4">
+		Evénements
+	</div>
+	<div class="col-md-4">
+		Evénements
+	</div>
+</div>
 {{ club.nom }} <br>
 {{ club.dateCreation|date('d/m/Y') }} <br>
 {{ club.dateModification|date('d/m/Y') }} <br>

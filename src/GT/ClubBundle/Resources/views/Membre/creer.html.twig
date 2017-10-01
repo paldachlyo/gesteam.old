@@ -1,16 +1,16 @@
 {% extends "GTClubBundle::layout.html.twig" %}
 
-{% block title %} {{ parent() }} - {{ club.nom }} - {{ 'gt.equipe.head_title.creer'|trans() }} {% endblock %}
+{% block title %} {{ parent() }} - {{ club.nom }} - {{ 'gt.membre.head_title.creer'|trans() }} {% endblock %}
 
 {% block menu_contextuel %}
-	{% set vars = {'club' : club, 'cl_equipes' : 'active' } %}
+	{% set vars = {'club' : club, 'cl_membres' : 'active' } %}
 	{% include 'GTClubBundle::menu_club.html.twig' with vars %}
 {% endblock %}
 
 {% block contenu %}
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<h3>{{ 'gt.equipe.form.titre.creer'|trans( { '%club%': club.nom } ) }}</h3>
+		<h3>{{ 'gt.membre.form.titre.creer'|trans( { '%club%': club.nom } ) }}</h3>
 		<div class="well">
 			{{ form(form) }}
 		</div>

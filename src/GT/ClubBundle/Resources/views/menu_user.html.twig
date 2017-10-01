@@ -1,1 +1,9 @@
-<a href="{{ path('gt_club_creer') }}" class="btn btn-primary btn-sm" role="button">{{ 'gt.club.btn_ajouter'|trans() }}</a>
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    Connecté en tant que {{ app.user.username }}
+    -
+    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+{% else %}
+    <a href="{{ path('fos_user_security_login') }}">Connexion</a>
+{% endif %}
+
+<a href="{{ path('gt_club_creer') }}" class="btn btn-primary btn-sm" role="button">{{ 'gt.club.btn.ajouter'|trans() }}</a>

@@ -1,25 +1,90 @@
 gt:
     club:
-        title:
+        head_title:
             creer: Création d'un club
+            modifier: Modification du club %club%
         default:
             hello: Bonjour 
         bienvenue: Bienvenue sur la page %pagename%
-        btn_ajouter: Ajouter un club
+        btn:
+            ajouter: Ajouter un club
         tab:
             label:
                 equipes: Equipes
                 membres: Effectifs
                 bureau: Bureau
-        equipe:
-            title:
-                creer: Création d'une équipe
-            colonne:
-                equipe: Equipe
+        form:
+            head_title:
+                creer: Création d'un club
+                modifier: Modification du club %club%
+            titre:
+                creer: Création d'un club
+                modifier: Modification du club %club%
+            label:
+                nom: Nom du club
+                email: Email du club
+                telephone: Téléphone du club
+                creer: Ajouter le club
+    equipe:
+        head_title:
+            creer: Création d'une équipe
+            modifier: Modifier l'équipe %equipe%
+        form:
+            titre:
+                creer: Création d'une équipe pour %club%
+                modifier: Modification de l'équipe %equipe% de %club%
+            label:
+                nom: Nom équipe
+                email: Email équipe
+                creer: Ajouter l'équipe
+                modifier: Modifier l'équipe
+        action:
+            modifier: Modifier
+            supprimer: Supprimer
+        liste:
+            equipe: Equipe
+            email: Email
+            date_creation: Date de création
+            date_modification: Date de modification
+            nombre_membres: Effectifs
+            no_equipe: Aucune équipe trouvée pour le club %club%
+        btn:
+            ajouter: Ajouter équipe
+            modifier: Modifier équipe
+            actions: Actions
+    membre:
+        head_title:
+            creer: Création d'un membre
+            modifier: Modifier %membre%
+        form:
+            titre:
+                creer: Création d'un membre pour %club%
+                modifier: Modification de %membre%
+            label:
+                nom: Nom du membre
+                prenom: Prénom du membre
                 email: Email
-                date_creation: Date de création
-                date_modification: Date de modification
-                nombre_membres: Effectifs
-                no_equipe: Aucune équipe trouvée pour ce club
-            btn_ajouter: Ajouter équipe
-        club: Club
+                telephone: Téléphone
+                date_naissance: Date de naissance
+                email_parent1: Email parent 1
+                email_parent2: Email parent 2
+                pseudo: Pseudo
+                taille: Taille
+                poids: Poids
+                creer: Ajouter membre
+        liste:
+            membre: Membre
+            nom: Nom
+            prenom: Prénom
+            email: Email
+            telephone: Téléphone
+            date_naissance: Date de naissance
+            email_parent1: Email parent 1
+            email_parent2: Email parent 2
+            pseudo: Pseudo
+            taille: Taille
+            poids: Poids
+        btn:
+            ajouter: Ajouter membre
+            modifier: Modifier membre
+                

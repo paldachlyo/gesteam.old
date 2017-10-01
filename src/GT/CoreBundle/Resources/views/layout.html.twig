@@ -12,55 +12,54 @@
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<style>
 			.navbar-inverse .navbar-brand {
-			  color: #ddd !important;
+				color: #ddd !important;
 			}
 			.navbar-inverse .navbar-brand:hover,
 			.navbar-inverse .navbar-brand:focus {
-			  color: #aaa !important;
-			  background-color: transparent;
+				color: #aaa !important;
+				background-color: transparent;
 			}
 			.navbar-inverse .navbar-text {
-			  color: #aaa !important;
+				color: #aaa !important;
 			}
 			.navbar-inverse .navbar-nav > li > a {
-			  color: #aaa !important;
+				color: #aaa !important;
 			}
 		</style>
-
     {% endblock %}
+
+	{% block javascripts %}
+		{# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	{% endblock %}
   </head>
 
 	<body>
-	<div class="container-fluid">
-		<div id="header" class="row">
-			<div class="col-md-1">GESTEAM</div>
-			<div class="col-md-11 text-right">
-				{% block menu_user %} Core Menu user {% endblock %}
+		<div class="container-fluid">
+			<div id="header" class="row">
+				<div class="col-md-1"><h3><small>GESTEAM</small></h3></div>
+				<div class="col-md-3"><h3><small>{% block nom_club_equipe %} default layout {% endblock %}</small></h3></div>
+				<div class="col-md-7 text-right">{% block menu_user %} Core Menu user {% endblock %}</div>
+				<div class="col-md-1"></div>
 			</div>
-		</div>
-		
-		{% block menu_contextuel %} Core Menu contextuel {% endblock %}
-		
-		<div class="row">
-			<div class="col-md-1"></div>
-			<div id="content" class="col-md-10">
-				{% block contenu %} Core Contenu de base {% endblock %}
+			
+			
+			<div class="row">
+				<div class="col-md-1"></div>
+				<div id="content" class="col-md-10">
+					{% block menu_contextuel %} Core Menu contextuel {% endblock %}
+					{% block contenu %} Core Contenu de base {% endblock %}
+				</div>
+				<div class="col-md-1"></div>
 			</div>
-			<div class="col-md-1"></div>
+
+			<hr>
+
+			<footer>
+				{% block footer %} Core footer {% endblock %}
+			</footer>
 		</div>
 
-		<hr>
-
-		<footer>
-			{% block footer %} Core footer {% endblock %}
-		</footer>
-	</div>
-
-  {% block javascripts %}
-    {# Ajoutez ces lignes JavaScript si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  {% endblock %}
-
-  </body>
+	</body>
 </html>

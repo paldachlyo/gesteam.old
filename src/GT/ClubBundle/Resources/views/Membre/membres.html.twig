@@ -6,3 +6,35 @@
 	{% set vars = {'club' : club, 'cl_membres' : 'active' } %}
 	{% include 'GTClubBundle::menu_club.html.twig' with vars %}
 {% endblock %}
+
+{% block contenu %}
+<div class="text-right">
+	<a href="{{ path('gt_membre_creer', { 'id_club': club.id } ) }}" class="btn btn-primary btn-sm" role="button">{{ 'gt.membre.btn.ajouter'|trans() }}</a>
+</div>
+
+<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>{{ 'gt.membre.liste.membre'|trans() }}</th>
+			<th>{{ 'gt.membre.liste.email'|trans() }}</th>
+			<th>{{ 'gt.membre.liste.date_naissance'|trans() }}</th>
+		</tr>
+	</thead>
+	<tbody>
+	{% if membres|length > 0 %}
+		{% for membre in membres %}
+		<tr>
+			<th scope="row">{{ membre.nom }} {{ membre.prenom }}</th>
+			<td>{{ membre.email }}</td>
+			<td>{{ membre.dateNaissance|date('d/m/Y') }}</td>
+		</tr>
+		{% endfor %}
+	{% else %}
+		<tr>
+			<td colspan="4">{{ 'gt.membre.liste.no_membre'|trans({'%club%': club.nom}) }}</td>
+		</tr>
+	{% endif %}
+	</tbody>
+</table>
+
+{% endblock %}

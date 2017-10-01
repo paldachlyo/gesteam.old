@@ -56,16 +56,9 @@ class Club
      * @ORM\Column(name="date_modification", type="date")
      */
 	private $dateModification;
-
-	/**
-	 * @ORM\OneToMany(targetEntity="GT\ClubBundle\Entity\Equipe", mappedBy="club")
-	 */
-	private $equipes;
 	
 	public function __construct() {
 		$this->dateCreation = new \DateTime();
-		$this->equipes = new ArrayCollection();
-		
 		$this->dateModification = new \DateTime();
 	}
 	
@@ -206,40 +199,5 @@ class Club
     public function getTelephone()
     {
         return $this->telephone;
-    }
-
-    /**
-     * Add equipe
-     *
-     * @param \GT\ClubBundle\Entity\Equipe $equipe
-     *
-     * @return Club
-     */
-    public function addEquipe(\GT\ClubBundle\Entity\Equipe $equipe)
-    {
-        $this->equipes[] = $equipe;
-		$equipe->setClub($this);
-
-        return $this;
-    }
-
-    /**
-     * Remove equipe
-     *
-     * @param \GT\ClubBundle\Entity\Equipe $equipe
-     */
-    public function removeEquipe(\GT\ClubBundle\Entity\Equipe $equipe)
-    {
-        $this->equipes->removeElement($equipe);
-    }
-
-    /**
-     * Get equipes
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getEquipes()
-    {
-        return $this->equipes;
     }
 }

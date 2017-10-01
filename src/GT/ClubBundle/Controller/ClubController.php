@@ -5,20 +5,23 @@ namespace GT\ClubBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use GT\ClubBundle\Entity\Club;
 use GT\ClubBundle\Form\ClubType;
 
 class ClubController extends Controller
 {
+	/**
+	 * @Security("has_role('ROLE_JOUEUR')")
+	 */
     public function indexAction($id_club)
     {
 		$em = $this->getDoctrine()->getManager();
 
-		// Pour récupérer un seul club, on utilise la méthode find($id)
 		$club = $em->getRepository('GTClubBundle:Club')->find($id_club);
 
-		// ou null si l'id $id n'existe pas, d'où ce if :
 		if (null === $club) {
 		  throw new NotFoundHttpException("Le club d'id ".$id_club." n'existe pas.");
 		}
@@ -27,6 +30,10 @@ class ClubController extends Controller
             'club' => $club
         ));
     }
+	
+	/**
+	 * @Security("has_role('ROLE_JOUEUR')")
+	 */
 	
 	public function creerAction(Request $request) {
 		$club = new Club();
@@ -44,6 +51,7 @@ class ClubController extends Controller
 
 		return $this->render('GTClubBundle:Club:creer.html.twig', array(
 			'form' => $form->createView(),
+			'club' => $club,
 		));
 	}
 	

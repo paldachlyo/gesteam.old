@@ -10,6 +10,7 @@ use GT\ClubBundle\Entity\Club;
 use GT\ClubBundle\Form\ClubType;
 use GT\ClubBundle\Entity\Equipe;
 use GT\ClubBundle\Form\EquipeType;
+use GT\ClubBundle\Form\EquipeMajType;
 
 class EquipeController extends Controller
 {
@@ -66,7 +67,7 @@ class EquipeController extends Controller
 		  throw new NotFoundHttpException("Le club d'id ".$id_club." n'existe pas.");
 		}
 		
-		$equipe = new equipe();
+		$equipe = new Equipe();
 		$form = $this->get('form.factory')->create(EquipeType::class, $equipe);
 
 		if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -81,6 +82,39 @@ class EquipeController extends Controller
 		}
 
 		return $this->render('GTClubBundle:Equipe:creer.html.twig', array(
+			'club' => $club,
+			'form' => $form->createView(),
+		));
+	}
+	
+	/**
+	 * Modifier une équipe
+	 */
+	public function modifierAction($id_equipe, Request $request) {
+		$em = $this->getDoctrine()->getManager();
+		
+		// l'équipe
+		$equipe = $em->getRepository('GTClubBundle:Equipe')->find($id_equipe);
+		if (null === $equipe) {
+		  throw new NotFoundHttpException("L'équipe d'id ".$id_equipe." n'existe pas.");
+		}
+		
+		$club = $equipe->getClub();
+		
+		$form = $this->get('form.factory')->create(EquipeMajType::class, $equipe);
+
+		if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+			$em->persist($equipe);
+			$em->flush();
+
+			$request->getSession()->getFlashBag()->add('notice', 'Equipe bien enregistrée.');
+
+			return $this->redirectToRoute('gt_club_equipes', array('id_club' => $club->getId()));
+		}
+
+		return $this->render('GTClubBundle:Equipe:modifier.html.twig', array(
+			'equipe' => $equipe,
 			'club' => $club,
 			'form' => $form->createView(),
 		));

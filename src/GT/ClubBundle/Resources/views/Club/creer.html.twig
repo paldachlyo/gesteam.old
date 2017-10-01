@@ -1,11 +1,18 @@
 {% extends "GTClubBundle::layout.html.twig" %}
 
-{% block title %} {{ parent() }} - {{ 'gt.club.title.creer'|trans() }} {% endblock %}
+{% block title %} {{ parent() }} - {{ 'gt.club.head_title.creer'|trans() }} {% endblock %}
 
 {% block menu_contextuel %}
-<h3>{{ 'gt.club.title.creer'|trans() }}</h3>
+
 {% endblock %}
 
 {% block contenu %}
-{{ form(form) }}
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h3>{{ 'gt.club.form.titre.creer'|trans() }}</h3>
+		<div class="well">
+			{{ form(form) }}
+		</div>
+	</div>
+</div>
 {% endblock %}
