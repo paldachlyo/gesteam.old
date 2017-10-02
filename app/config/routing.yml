@@ -1,3 +1,7 @@
+gt_admin:
+    resource: "@GTAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
 gt_club:
     resource: "@GTClubBundle/Resources/config/routing.yml"
     prefix:   /club

@@ -34,7 +34,6 @@ class ClubController extends Controller
 	/**
 	 * @Security("has_role('ROLE_JOUEUR')")
 	 */
-	
 	public function creerAction(Request $request) {
 		$club = new Club();
 		$form = $this->get('form.factory')->create(ClubType::class, $club);

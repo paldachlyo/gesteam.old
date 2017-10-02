@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new GT\ClubBundle\GTClubBundle(),
             new GT\UserBundle\GTUserBundle(),
 			new FOS\UserBundle\FOSUserBundle(),
-
+            new GT\AdminBundle\GTAdminBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
