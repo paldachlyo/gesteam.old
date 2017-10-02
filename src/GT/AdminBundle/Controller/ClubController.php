@@ -9,7 +9,9 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 use GT\ClubBundle\Entity\Club;
-use GT\ClubBundle\Form\ClubType;
+
+use GT\AdminBundle\Form\ClubType;
+use GT\AdminBundle\Form\ClubMajType;
 
 class ClubController extends Controller
 {
@@ -28,6 +30,9 @@ class ClubController extends Controller
         ));
     }
 	
+	/**
+	 * Ajouter un club
+	 */
 	public function ajouterAction(Request $request) {
 		$club = new Club();
 		$form = $this->get('form.factory')->create(ClubType::class, $club);
@@ -39,7 +44,7 @@ class ClubController extends Controller
 
 			$request->getSession()->getFlashBag()->add('notice', 'club bien enregistrée.');
 			
-			return $this->redirectToRoute('gt_admin_homepage');
+			return $this->redirectToRoute('gt_admin_clubs');
 		}
 
 		return $this->render('GTAdminBundle:Club:ajouter.html.twig', array(
@@ -54,13 +59,13 @@ class ClubController extends Controller
 	public function modifierAction($id_club, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		
-		// le club à modifier
+		// l'équipe
 		$club = $em->getRepository('GTClubBundle:Club')->find($id_club);
 		if (null === $club) {
 		  throw new NotFoundHttpException("Le club d'id ".$id_club." n'existe pas.");
 		}
 		
-		$form = $this->get('form.factory')->create(ClubType::class, $club);
+		$form = $this->get('form.factory')->create(ClubMajType::class, $club);
 
 		if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 

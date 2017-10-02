@@ -26,7 +26,7 @@
 		{% if clubs|length > 0 %}
 			{% for club in clubs %}
 			<tr>
-				<th scope="row">{{ club.nom }}</th>
+				<td scope="row">{{ club.nom }}</td>
 				<td>{{ club.email }}</td>
 				<td>{{ club.dateCreation|date('d/m/Y') }}</td>
 				<td>

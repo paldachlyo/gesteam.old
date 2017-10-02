@@ -1,0 +1,15 @@
+gt_admin_homepage:
+    path:     /
+    defaults: { _controller: GTAdminBundle:Default:index }
+    
+gt_admin_clubs:
+    path: /clubs
+    defaults: { _controller: GTAdminBundle:Club:liste }
+    
+gt_admin_club_modifier:
+    path: /club/modifier/{id_club}
+    defaults: { _controller: GTAdminBundle:Club:modifier }
+    
+gt_admin_club_ajouter:
+    path: /club/ajouter
+    defaults: { _controller: GTAdminBundle:Club:ajouter }

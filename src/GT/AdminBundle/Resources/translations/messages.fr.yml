@@ -1,8 +1,39 @@
 gt:
     admin:
+        head_title:
+            clubs: Les clubs
+            club:
+                ajouter: Ajouter un club
+                modifier: Modifier %club%
+        titre:
+            clubs: Les clubs
+            equipes: Les équipes
+            membres: Les membres
         tab:
             label:
                 clubs: Clubs
                 equipes: Equipes
                 membres: Membres
-                
+        club:
+            btn:
+                actions: Actions
+                ajouter: Ajouter un club
+            liste:
+                club: Club
+                email: Email
+                date_creation: Date de création
+            action:
+                modifier: Modifier
+                ajouter: Ajouter
+                supprimer: Supprimer
+            form:
+                titre:
+                    ajouter: Créer un nouveau club
+                    modifier: Modifier le club %club%
+                label:
+                    ajouter: Ajouter un club
+                    modifier: Modifier le club
+                    nom: Nom du club
+                    email: Email
+                    telephone: Téléphone
+                    
