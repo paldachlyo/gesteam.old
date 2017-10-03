@@ -29,7 +29,7 @@ gt:
             form:
                 titre:
                     ajouter: Créer un nouveau club
-                    modifier: Modifier le club %club%
+                    modifier: Modifier le club <b>%club%</b>
                 label:
                     ajouter: Ajouter un club
                     modifier: Modifier le club

@@ -40,7 +40,25 @@
 			<div id="header" class="row">
 				<div class="col-md-1"><h3><small>GESTEAM</small></h3></div>
 				<div class="col-md-3"><h3><small>{% block nom_club_equipe %} default layout {% endblock %}</small></h3></div>
-				<div class="col-md-7 text-right">{% block menu_user %} Core Menu user {% endblock %}</div>
+				<div class="col-md-7 text-right">
+					{% block menu_user %}
+						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							<div class="dropdown">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								<span class="caret"></span>
+								</button>
+								<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+									<li class="dropdown-header">{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li>
+									<li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+									<li><a href="{{ path('fos_user_profile_show') }}">{{ 'profil'|trans() }}</a></li>
+								</ul>
+							</div>
+						{% else %}
+							<a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+						{% endif %}
+					{% endblock %}
+				</div>
 				<div class="col-md-1"></div>
 			</div>
 			
@@ -49,6 +67,19 @@
 				<div class="col-md-1"></div>
 				<div id="content" class="col-md-10">
 					{% block menu_contextuel %} Core Menu contextuel {% endblock %}
+
+					{% block flashmessages %}
+						{# On affiche les messages flash que définissent les contrôleurs du bundle #}
+						{% for key, messages in app.session.flashbag.all() %}
+							{% for message in messages %}
+								<div class="alert alert-{{ key }} alert-dismissible" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									{{ message|trans() }}
+								</div>
+							{% endfor %}
+						{% endfor %}
+					{% endblock %}
+
 					{% block contenu %} Core Contenu de base {% endblock %}
 				</div>
 				<div class="col-md-1"></div>

@@ -42,7 +42,7 @@ class ClubController extends Controller
 			$em->persist($club);
 			$em->flush();
 
-			$request->getSession()->getFlashBag()->add('notice', 'club bien enregistrée.');
+			$request->getSession()->getFlashBag()->add('success', 'club bien enregistrée.');
 			
 			return $this->redirectToRoute('gt_admin_clubs');
 		}
@@ -59,8 +59,9 @@ class ClubController extends Controller
 	public function modifierAction($id_club, Request $request) {
 		$em = $this->getDoctrine()->getManager();
 		
-		// l'équipe
+		// le club
 		$club = $em->getRepository('GTClubBundle:Club')->find($id_club);
+		$equipe = array();
 		if (null === $club) {
 		  throw new NotFoundHttpException("Le club d'id ".$id_club." n'existe pas.");
 		}
@@ -72,13 +73,18 @@ class ClubController extends Controller
 			$em->persist($club);
 			$em->flush();
 
-			$request->getSession()->getFlashBag()->add('notice', 'Club bien enregistré.');
+			$request->getSession()->getFlashBag()->add('success', 'Club bien enregistré.');
 
 			return $this->redirectToRoute('gt_admin_clubs');
+		} else {
+			$equipes = $em
+				->getRepository('GTClubBundle:Equipe')
+				->findBy(array('club' => $club));
 		}
 
 		return $this->render('GTAdminBundle:Club:modifier.html.twig', array(
 			'club' => $club,
+			'equipes' => $equipes,
 			'form' => $form->createView(),
 		));
 	}

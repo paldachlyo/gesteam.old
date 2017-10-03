@@ -1,9 +1,5 @@
 {% extends "GTCoreBundle::layout.html.twig" %}
 
-{% block menu_user %}
-	{% include 'GTClubBundle::menu_user.html.twig' %}
-{% endblock %}
-
 {% block nom_club_equipe %} 
 	{% if club is defined %}
 		{{ club.nom }}
@@ -11,13 +7,3 @@
 		{{ 'gt.club.no_club'|trans() }}
 	{% endif %}
 {% endblock %} 
-
-{% block flashmessage %}
-	{% for key, messages in app.session.flashbag.all() %}
-		{% for message in messages %}
-			<div class="alert alert-{{ key }}">
-				{{ message|trans() }}
-			</div>
-		{% endfor %}
-	{% endfor %}
-{% endblock %}
