@@ -4,14 +4,27 @@
 
 {% block contenu %}
 	<div class="row">
-		<div class="col-md-8 col-md-offset-2">
-			<h3>{{ 'gt.admin.club.form.titre.modifier'|trans( { '%club%': club.nom } )|raw }}</h3>
-			<div class="well">
-				{{ form(form) }}
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">{{ 'gt.admin.club.form.titre.modifier'|trans( { '%club%': club.nom } )|raw }}</div>
+				<div class="panel-body">
+					{{ form(form) }}
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-md-6">{{ 'gt.admin.club.form.label.equipes'|trans() }}</div>
+						<div class="col-md-6 text-right"><a href="{{ path('gt_equipe_creer', { 'id_club': club.id } ) }}" class="btn btn-success btn-xs" role="button">{{ 'gt.equipe.btn.ajouter'|trans() }}</a></div>
+					</div>
+				</div>
+			</div>
+			<div class="panel-body">
+				{% set vars = { 'club' : club, 'equipes' : equipes, 'options': { 'modifier': 'gt_equipe_modifier', 'supprimer': 'gt_equipe_supprimer' } } %}
+				{% include 'GTClubBundle::inc_equipes.html.twig' with vars %}
 			</div>
 		</div>
 	</div>
-
-	{% set vars = {'club' : club, 'equipes' : equipes } %}
-	{% include 'GTClubBundle::inc_equipes.html.twig' with vars %}
 {% endblock %}

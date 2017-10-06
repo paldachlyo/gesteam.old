@@ -31,6 +31,7 @@ gt:
                     ajouter: Créer un nouveau club
                     modifier: Modifier le club <b>%club%</b>
                 label:
+                    equipes: Les équipes
                     ajouter: Ajouter un club
                     modifier: Modifier le club
                     nom: Nom du club

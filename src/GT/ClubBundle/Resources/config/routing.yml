@@ -26,6 +26,10 @@ gt_equipe_modifier:
     path: /equipe/modifier/{id_equipe}
     defaults: { _controller: GTClubBundle:Equipe:modifier }
     
+gt_equipe_supprimer:
+    path: /equipe/supprimer/{id_equipe}
+    defaults: { _controller: GTClubBundle:Equipe:modifier }
+    
 gt_club_equipes:
     path: /{id_club}/equipes
     defaults: { _controller: GTClubBundle:Equipe:equipes }

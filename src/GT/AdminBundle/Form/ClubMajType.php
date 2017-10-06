@@ -18,7 +18,7 @@ class ClubMajType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder->remove('submit');
 		
-		$builder->add('submit', SubmitType::class, array('label' => 'gt.admin.club.form.label.modifier'));
+		$builder->add('submit', SubmitType::class, array('label' => 'gt.admin.club.form.label.modifier', 'attr' => array('class' => 'btn btn-primary')));
     }
 	
 	public function getParent() {
