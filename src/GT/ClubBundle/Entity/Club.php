@@ -61,6 +61,12 @@ class Club
 		$this->dateCreation = new \DateTime();
 		$this->dateModification = new \DateTime();
 	}
+	/**
+	 * @ORM\PrePersist()
+	 */
+	public function preSave() {
+		$this->setDateModification(new \DateTime());
+	}
 	
     /**
      * Get id

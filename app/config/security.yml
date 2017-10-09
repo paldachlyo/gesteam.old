@@ -34,4 +34,5 @@ security:
                 secret: %secret%
 
     access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
         #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

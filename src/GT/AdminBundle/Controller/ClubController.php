@@ -98,5 +98,19 @@ class ClubController extends Controller
 			'clubs' => $clubs
 		));
 	}
+	
+	public function roleAction() {
+		$club = new Club();
+		$userManager = $this->get('fos_user.user_manager');
+		
+		$user = $userManager->findUserBy(array('id' => 4));
+		
+		$user->setRoles(array('ROLE_ADMIN'));
+		$userManager->updateUser($user);
+		
+		return $this->render('GTAdminBundle:Club:clubs.html.twig', array(
+			'clubs' => $clubs
+		));
+	}
 
 }

@@ -13,3 +13,7 @@ gt_admin_club_modifier:
 gt_admin_club_ajouter:
     path: /club/ajouter
     defaults: { _controller: GTAdminBundle:Club:ajouter }
+    
+gt_admin_club_role:
+    path: /club/role
+    defaults: { _controller: GTAdminBundle:Club:role }
