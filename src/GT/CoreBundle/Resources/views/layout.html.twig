@@ -9,31 +9,142 @@
     <title>{% block title %} GESTEAM {% endblock %}</title>
 
     {% block stylesheets %}
-		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+		<link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 		<style>
-			.navbar-inverse .navbar-brand {
-				color: #ddd !important;
+			.table-perso,
+			.table-perso > th,
+			.table-perso > td {
+				background-color: #b8daff;
 			}
-			.navbar-inverse .navbar-brand:hover,
-			.navbar-inverse .navbar-brand:focus {
-				color: #aaa !important;
+			.table-hover .table-perso:hover {
+				background-color: #9fcdff;
+			}
+
+			.table-hover .table-perso:hover > td,
+			.table-hover .table-perso:hover > th {
+				background-color: #9fcdff;
+			}
+			.btn-perso {
+				color: #fff;
+				background-color: #007bff;
+				border-color: #007bff;
+			}
+
+			.btn-perso:hover {
+				color: #fff;
+				background-color: #0069d9;
+				border-color: #0062cc;
+			}
+
+			.btn-perso:focus, .btn-perso.focus {
+				box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+			}
+
+			.btn-perso.disabled, .btn-perso:disabled {
+				background-color: #007bff;
+				border-color: #007bff;
+			}
+
+			.btn-perso:active, .btn-perso.active,
+			.show > .btn-perso.dropdown-toggle {
+				background-color: #0069d9;
+				background-image: none;
+				border-color: #0062cc;
+			}
+			.btn-outline-perso {
+				color: #007bff;
+				background-color: transparent;
+				background-image: none;
+				border-color: #007bff;
+			}
+
+			.btn-outline-perso:hover {
+				color: #fff;
+				background-color: #007bff;
+				border-color: #007bff;
+			}
+
+			.btn-outline-perso:focus, .btn-outline-perso.focus {
+				box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+			}
+
+			.btn-outline-perso.disabled, .btn-outline-perso:disabled {
+				color: #007bff;
 				background-color: transparent;
 			}
-			.navbar-inverse .navbar-text {
-				color: #aaa !important;
+
+			.btn-outline-perso:active, .btn-outline-perso.active,
+			.show > .btn-outline-perso.dropdown-toggle {
+				color: #fff;
+				background-color: #007bff;
+				border-color: #007bff;
 			}
-			.navbar-inverse .navbar-nav > li > a {
-				color: #aaa !important;
+			.badge-perso {
+				color: #fff;
+				background-color: #007bff;
 			}
-			.navbar, .navbar-header {
-				background-color: yellow !important;
+
+			.badge-perso[href]:focus, .badge-perso[href]:hover {
+				color: #fff;
+				text-decoration: none;
+				background-color: #0062cc;
 			}
-			.panel .panel-title {
-				background-color: yellow !important;
+			.alert-perso {
+				color: #004085;
+				background-color: #cce5ff;
+				border-color: #b8daff;
 			}
-			.navbar a {
-				color: white !important;
+
+			.alert-perso hr {
+				border-top-color: #9fcdff;
 			}
+
+			.alert-perso .alert-link {
+				color: #002752;
+			}
+			.list-group-item-perso {
+				color: #004085;
+				background-color: #b8daff;
+			}
+
+			a.list-group-item-perso,
+			button.list-group-item-perso {
+				color: #004085;
+			}
+
+			a.list-group-item-perso:focus, a.list-group-item-perso:hover,
+			button.list-group-item-perso:focus,
+			button.list-group-item-perso:hover {
+				color: #004085;
+				background-color: #9fcdff;
+			}
+
+			a.list-group-item-perso.active,
+			button.list-group-item-perso.active {
+				color: #fff;
+				background-color: #004085;
+				border-color: #004085;
+			}
+			.bg-perso {
+				background-color: #007bff !important;
+			}
+
+			a.bg-perso:focus, a.bg-perso:hover {
+				background-color: #0062cc !important;
+			}
+			.border-perso {
+				border-color: #007bff !important;
+			}
+			.text-perso {
+				color: #007bff !important;
+			}
+
+			a.text-perso:focus, a.text-perso:hover {
+				color: #0062cc !important;
+			}
+
+
 		</style>
     {% endblock %}
 
@@ -52,6 +163,18 @@
 				<div class="col-md-7 text-right">
 					{% block menu_user %}
 						{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							
+							<div class="dropdown">
+								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+								</button>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+								<a class="dropdown-item" href="#">Action</a>
+								<a class="dropdown-item" href="#">Another action</a>
+								<a class="dropdown-item" href="#">Something else here</a>
+								</div>
+							</div>
+							
 							<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>

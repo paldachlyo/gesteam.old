@@ -4,6 +4,7 @@
 namespace GT\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
@@ -17,4 +18,5 @@ class User extends BaseUser
 	 * @ORM\GeneratedValue(strategy="AUTO")
 	 */
 	protected $id;
+
 }
